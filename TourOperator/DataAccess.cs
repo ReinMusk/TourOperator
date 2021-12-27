@@ -320,13 +320,13 @@ namespace Core
             return tickets.FirstOrDefault(t => t.Id_Ticket == id);
         }
 
-        public static void UpdateAirline(int id, Ticket ticket)
+        public static void UpdateTicket(int id, Ticket ticket)
         {
             DBconnection.connection.Ticket.SingleOrDefault(t => t.Id_Ticket == id);
             DBconnection.connection.SaveChanges();
         }
 
-        public static void DeleteAirline(Ticket ticket)
+        public static void DeleteTicket(Ticket ticket)
         {
             DBconnection.connection.Ticket.Remove(ticket);
             DBconnection.connection.SaveChanges();
@@ -382,7 +382,7 @@ namespace Core
             }
         }
 
-        public static bool AddNewClients(Clients clients)
+        public static bool AddNewClient(Clients clients)
         {
             try
             {
@@ -408,7 +408,7 @@ namespace Core
             return clients.FirstOrDefault(t => t.Name == name);
         }
 
-        public static void UpdateClient(int id, Airline client)
+        public static void UpdateClient(int id, Clients client)
         {
             DBconnection.connection.Clients.SingleOrDefault(t => t.Id_Client == id);
             DBconnection.connection.SaveChanges();
