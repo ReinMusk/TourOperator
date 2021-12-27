@@ -7,11 +7,13 @@ namespace ConsoleApp
     {
         static void Main()
         {
-            while (true)
-            {
-                var command = Console.ReadLine();
-                Execute(command);
-            }
+
+            DeleteFlight(1);
+            //while (true)
+            //{
+            //    var command = Console.ReadLine();
+            //    Execute(command);
+            //}
         }
 
         private static void Execute(string command)
@@ -119,9 +121,6 @@ namespace ConsoleApp
             {
                 case "Ticket":
                     DeleteTicket(n);
-                    break;
-                case "Tours":
-                    DeleteTour(n);
                     break;
                 case "Flight":
                     DeleteFlight(n);

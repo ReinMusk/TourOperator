@@ -310,9 +310,7 @@ namespace Core
 
         public static void DeleteTicket(Ticket ticket)
         {
-            DBconnection.connection.Ticket.Attach(ticket);
             DBconnection.connection.Ticket.Remove(ticket);
-            DBconnection.connection.Entry(ticket).State = EntityState.Deleted;
             DBconnection.connection.SaveChanges();
         }
 
@@ -402,8 +400,7 @@ namespace Core
 
         public static void DeleteFlight(int id)
         {
-            ObservableCollection<Flight> flights = GetFlights();
-            var flight = flights.FirstOrDefault(t => t.Id_Flight == id);
+            var flight = GetFlight(id);
 
             DBconnection.connection.Flight.Remove(flight);
             DBconnection.connection.SaveChanges();
@@ -488,21 +485,6 @@ namespace Core
         {
             ObservableCollection<Tours> tours = GetTours();
             return tours.FirstOrDefault(t => t.Name == name);
-        }
-
-        public static void DeleteTour(Tours tour)
-        {
-            DBconnection.connection.Tours.Remove(tour);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteTour(int id)
-        {
-            ObservableCollection<Tours> tours = GetTours();
-            var tour = tours.FirstOrDefault(t => t.Id_Tour == id);
-
-            DBconnection.connection.Tours.Remove(tour);
-            DBconnection.connection.SaveChanges();
         }
         #endregion
     }
