@@ -14,16 +14,7 @@ namespace Core
     
     public partial class Airline
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Airline()
-        {
-            this.Tours = new HashSet<Tours>();
-        }
-    
         public int Id_Airline { get; set; }
         public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tours> Tours { get; set; }
     }
 }

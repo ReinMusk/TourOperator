@@ -25,17 +25,6 @@ namespace ApiTourOperator.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, Ticket ticket)
-        {
-            var result = GetTicket(id);
-            if (result == null)
-                return NotFound();
-
-            UpdateTicket(id, ticket);
-            return NoContent();
-        }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

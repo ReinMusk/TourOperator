@@ -30,6 +30,7 @@ namespace Core
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Flight> Flight { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<Tours> Tours { get; set; }
     }

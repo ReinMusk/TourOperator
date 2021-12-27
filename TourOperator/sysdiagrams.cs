@@ -12,10 +12,12 @@ namespace Core
     using System;
     using System.Collections.Generic;
     
-    public partial class Ticket
+    public partial class sysdiagrams
     {
-        public int Id_Ticket { get; set; }
-        public Nullable<int> Id_Flight { get; set; }
-        public Nullable<int> Id_Client { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

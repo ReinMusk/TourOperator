@@ -25,17 +25,6 @@ namespace ApiTourOperator.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, Flight flight)
-        {
-            var result = GetFlight(id);
-            if (result == null)
-                return NotFound();
-
-            UpdateFlight(id, flight);
-            return NoContent();
-        }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

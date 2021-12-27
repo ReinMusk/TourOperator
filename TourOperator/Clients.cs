@@ -14,18 +14,8 @@ namespace Core
     
     public partial class Clients
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
-        {
-            this.Ticket = new HashSet<Ticket>();
-        }
-    
         public int Id_Client { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Nullable<System.DateTime> Date_Birth { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }

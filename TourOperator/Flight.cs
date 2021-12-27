@@ -14,12 +14,6 @@ namespace Core
     
     public partial class Flight
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Flight()
-        {
-            this.Ticket = new HashSet<Ticket>();
-        }
-    
         public int Id_Flight { get; set; }
         public Nullable<int> Id_Tour { get; set; }
         public Nullable<System.DateTime> DateFlight { get; set; }
@@ -27,10 +21,5 @@ namespace Core
         public Nullable<System.TimeSpan> FlightTime { get; set; }
         public Nullable<int> Id_Airplane { get; set; }
         public Nullable<decimal> Price_ticket { get; set; }
-    
-        public virtual Airplane Airplane { get; set; }
-        public virtual Tours Tours { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }

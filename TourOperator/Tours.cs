@@ -14,23 +14,11 @@ namespace Core
     
     public partial class Tours
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tours()
-        {
-            this.Flight = new HashSet<Flight>();
-        }
-    
         public int Id_Tour { get; set; }
         public string Name { get; set; }
         public Nullable<int> Id_DepartureCity { get; set; }
         public Nullable<int> Id_LandingCity { get; set; }
         public Nullable<int> Id_Airline { get; set; }
         public Nullable<int> CountDays { get; set; }
-    
-        public virtual Airline Airline { get; set; }
-        public virtual City City { get; set; }
-        public virtual City City1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flight> Flight { get; set; }
     }
 }

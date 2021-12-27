@@ -1,5 +1,4 @@
-﻿using Core;
-using System;
+﻿using System;
 using static Core.DataAccess;
 
 namespace ConsoleApp
@@ -8,15 +7,11 @@ namespace ConsoleApp
     {
         static void Main()
         {
-            
-            //DeleteTicket(2);
-            
-            Console.ReadLine();
-            //while (true)
-            //{
-            //    var command = Console.ReadLine();
-            //    Execute(command);
-            //}
+            while (true)
+            {
+                var command = Console.ReadLine();
+                Execute(command);
+            }
         }
 
         private static void Execute(string command)
@@ -57,7 +52,7 @@ namespace ConsoleApp
                     t = AddNewCity(temp[0]);
                     break;
                 case "Clients":
-                    t = AddNewClient(temp[0], temp[1], Convert.ToDateTime(temp[2]));
+                    t = AddNewClient(temp[0], temp[1]);
                     break;
                 case "Ticket":
                     t = AddNewTicket(int.Parse(temp[0]), int.Parse(temp[1]));
@@ -96,7 +91,7 @@ namespace ConsoleApp
                     break;
                 case "Client":
                     foreach (var a in GetClients())
-                        Console.WriteLine($"{a.Name} {a.Surname} {a.Date_Birth}");
+                        Console.WriteLine($"{a.Name} {a.Surname}");
                     break;
                 case "Ticket":
                     foreach (var a in GetTickets())
@@ -139,11 +134,11 @@ namespace ConsoleApp
 
         private static void Update(string com)
         {
-            string[] temp = Console.ReadLine().Trim().Split(' ');
+            string[] temp = Console.ReadLine().Split(' ');
             switch (com)
             {
                 case "Client":
-                    UpdateClient(int.Parse(temp[0]), new Clients() { Name = temp[1] });
+                    UpdateClient(int.Parse(temp[0]), GetClient(temp[0]));
                     break;
             }
         }

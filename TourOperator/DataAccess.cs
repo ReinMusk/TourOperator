@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 
 namespace Core
 {
@@ -14,20 +15,10 @@ namespace Core
     {
         // Airplane
         #region
-        public static List<Airplane> GetAirplanes()
+        public static ObservableCollection<Airplane> GetAirplanes()
         {
-            List<Airplane> airplaness = new List<Airplane>(DBconnection.connection.Airplane);
-            List<Airplane> airplns = new List<Airplane>();
-            foreach (var item in airplaness)
-            {
-                airplns.Add(
-                    new Airplane
-                    {
-                        Id_Airplane = item.Id_Airplane,
-                        Name = item.Name
-                    });
-            }
-            return airplns;
+            ObservableCollection<Airplane> airplaness = new ObservableCollection<Airplane>(DBconnection.connection.Airplane);
+            return airplaness;
         }
 
         public static bool AddNewAirplane(string newName)
@@ -65,39 +56,24 @@ namespace Core
 
         public static Airplane GetAirplane(int id)
         {
-            List<Airplane> airolanes = GetAirplanes();
+            ObservableCollection<Airplane> airolanes = GetAirplanes();
             return airolanes.FirstOrDefault(t => t.Id_Airplane == id);
         }
 
         public static Airplane GetAirplane(string name)
         {
-            List<Airplane> tattoos = GetAirplanes();
-            return tattoos.FirstOrDefault(t => t.Name == name);
-        }
-
-        public static void UpdateAirplane(int id, Airplane airplane)
-        {
-            DBconnection.connection.Airplane.SingleOrDefault(t => t.Id_Airplane == id);
-            DBconnection.connection.SaveChanges();
+            ObservableCollection<Airplane> airolanes = GetAirplanes();
+            return airolanes.FirstOrDefault(t => t.Name == name);
         }
         #endregion // Airplane
 
         // City
         #region
-        public static List<City> GetCities()
+        public static ObservableCollection<City> GetCities()
         {
-            List<City> cities = new List<City>(DBconnection.connection.City);
-            List<City> city = new List<City>();
-            foreach (var item in cities)
-            {
-                city.Add(
-                    new City
-                    {
-                        Id_City = item.Id_City,
-                        Name = item.Name
-                    });
-            }
-            return city;
+            ObservableCollection<City> cities = new ObservableCollection<City>(DBconnection.connection.City);
+
+            return cities;
         }
 
         public static bool AddNewCity(City city)
@@ -135,29 +111,24 @@ namespace Core
 
         public static City GetCity(int id)
         {
-            List<City> cities = GetCities();
+            ObservableCollection<City> cities = GetCities();
             return cities.FirstOrDefault(t => t.Id_City == id);
         }
 
         public static City GetCity(string name)
         {
-            List<City> cities = GetCities();
+            ObservableCollection<City> cities = GetCities();
             return cities.FirstOrDefault(t => t.Name == name);
         }
 
-        public static void UpdateCity(int id, City city)
-        {
-            DBconnection.connection.City.SingleOrDefault(t => t.Id_City == id);
-            DBconnection.connection.SaveChanges();
-        }
         #endregion
 
         // Airlines
         #region
-        public static List<Airline> GetAirlines()
+        public static ObservableCollection<Airline> GetAirlines()
         {
-            List<Airline> airlines = new List<Airline>(DBconnection.connection.Airline);
-            List<Airline> airlin = new List<Airline>();
+            ObservableCollection<Airline> airlines = new ObservableCollection<Airline>(DBconnection.connection.Airline);
+            ObservableCollection<Airline> airlin = new ObservableCollection<Airline>();
             foreach (var item in airlines)
             {
                 airlin.Add(
@@ -206,29 +177,23 @@ namespace Core
 
         public static Airline GetAirline(int id)
         {
-            List<Airline> airlines = GetAirlines();
+            ObservableCollection<Airline> airlines = GetAirlines();
             return airlines.FirstOrDefault(t => t.Id_Airline == id);
         }
 
         public static Airline GetAirline(string name)
         {
-            List<Airline> airlines = GetAirlines();
+            ObservableCollection<Airline> airlines = GetAirlines();
             return airlines.FirstOrDefault(t => t.Name == name);
-        }
-
-        public static void UpdateAirline(int id, Airline airline)
-        {
-            DBconnection.connection.Airline.SingleOrDefault(t => t.Id_Airline == id);
-            DBconnection.connection.SaveChanges();
         }
         #endregion
 
         //Clients
         #region
-        public static List<Clients> GetClients()
+        public static ObservableCollection<Clients> GetClients()
         {
-            List<Clients> clients = new List<Clients>(DBconnection.connection.Clients);
-            List<Clients> client = new List<Clients>();
+            ObservableCollection<Clients> clients = new ObservableCollection<Clients>(DBconnection.connection.Clients);
+            ObservableCollection<Clients> client = new ObservableCollection<Clients>();
             foreach (var item in clients)
             {
                 client.Add(
@@ -236,15 +201,13 @@ namespace Core
                     {
                         Id_Client = item.Id_Client,
                         Name = item.Name,
-                        Surname = item.Surname,
-                        Date_Birth = item.Date_Birth
+                        Surname = item.Surname
                     });
             }
             return client;
         }
 
-        public static bool AddNewClient(string newName, string newSurname,
-            DateTime newDate_Birth)
+        public static bool AddNewClient(string newName, string newSurname)
         {
             try
             {
@@ -252,7 +215,6 @@ namespace Core
                 {
                     Name = newName,
                     Surname = newSurname,
-                    Date_Birth = newDate_Birth
                 };
 
                 DBconnection.connection.Clients.Add(client);
@@ -281,13 +243,13 @@ namespace Core
 
         public static Clients GetClient(int id)
         {
-            List<Clients> clients = GetClients();
+            ObservableCollection<Clients> clients = GetClients();
             return clients.FirstOrDefault(t => t.Id_Client == id);
         }
 
         public static Clients GetClient(string name)
         {
-            List<Clients> clients = GetClients();
+            ObservableCollection<Clients> clients = GetClients();
             return clients.FirstOrDefault(t => t.Name == name);
         }
 
@@ -300,21 +262,10 @@ namespace Core
 
         // Tickets
         #region
-        public static List<Ticket> GetTickets()
+        public static ObservableCollection<Ticket> GetTickets()
         {
-            List<Ticket> tickets = new List<Ticket>(DBconnection.connection.Ticket);
-            List<Ticket> ticket = new List<Ticket>();
-            foreach (var item in tickets)
-            {
-                ticket.Add(
-                    new Ticket
-                    {
-                        Id_Ticket = item.Id_Ticket,
-                        Id_Client = item.Id_Client,
-                        Id_Flight = item.Id_Flight
-                    });
-            }
-            return ticket;
+            ObservableCollection<Ticket> tickets = new ObservableCollection<Ticket>(DBconnection.connection.Ticket);
+            return tickets;
         }
 
         public static bool AddNewTicket(int newId_Client, int newId_Flight)
@@ -353,38 +304,33 @@ namespace Core
 
         public static Ticket GetTicket(int id)
         {
-            List<Ticket> tickets = GetTickets();
+            ObservableCollection<Ticket> tickets = GetTickets();
             return tickets.FirstOrDefault(t => t.Id_Ticket == id);
-        }
-
-        public static void UpdateTicket(int id, Ticket ticket)
-        {
-            DBconnection.connection.Ticket.SingleOrDefault(t => t.Id_Ticket == id);
-            DBconnection.connection.SaveChanges();
         }
 
         public static void DeleteTicket(Ticket ticket)
         {
-            DBconnection.connection.Entry(ticket).State = System.Data.Entity.EntityState.Deleted;
+            DBconnection.connection.Ticket.Attach(ticket);
+            DBconnection.connection.Ticket.Remove(ticket);
+            DBconnection.connection.Entry(ticket).State = EntityState.Deleted;
             DBconnection.connection.SaveChanges();
         }
 
         public static void DeleteTicket(int id)
         {
-            List<Ticket> tickets = GetTickets();
-            var ticket = tickets.FirstOrDefault(t => t.Id_Ticket == id);
+            var ticket = GetTicket(id);
 
-            DBconnection.connection.Entry(ticket).State = System.Data.Entity.EntityState.Deleted; ;
+            DBconnection.connection.Ticket.Remove(ticket);
             DBconnection.connection.SaveChanges();
         }
         #endregion
 
         //Flights
         #region
-        public static List<Flight> GetFlights()
+        public static ObservableCollection<Flight> GetFlights()
         {
-            List<Flight> flights = new List<Flight>(DBconnection.connection.Flight);
-            List<Flight> flight = new List<Flight>();
+            ObservableCollection<Flight> flights = new ObservableCollection<Flight>(DBconnection.connection.Flight);
+            ObservableCollection<Flight> flight = new ObservableCollection<Flight>();
             foreach (var item in flights)
             {
                 flight.Add(
@@ -399,7 +345,7 @@ namespace Core
                         Price_ticket = item.Price_ticket
                     });
             }
-            return flight;
+            return flights;
         }
 
         public static bool AddNewFlight(int newId_Tour, 
@@ -444,14 +390,8 @@ namespace Core
 
         public static Flight GetFlight(int id)
         {
-            List<Flight> clients = GetFlights();
+            ObservableCollection<Flight> clients = GetFlights();
             return clients.FirstOrDefault(t => t.Id_Flight == id);
-        }
-
-        public static void UpdateFlight(int id, Flight flight)
-        {
-            DBconnection.connection.Flight.SingleOrDefault(t => t.Id_Flight == id);
-            DBconnection.connection.SaveChanges();
         }
 
         public static void DeleteFlight(Flight flight)
@@ -462,7 +402,7 @@ namespace Core
 
         public static void DeleteFlight(int id)
         {
-            List<Flight> flights = GetFlights();
+            ObservableCollection<Flight> flights = GetFlights();
             var flight = flights.FirstOrDefault(t => t.Id_Flight == id);
 
             DBconnection.connection.Flight.Remove(flight);
@@ -472,10 +412,10 @@ namespace Core
 
         //Tours
         #region
-        public static List<Tours> GetTours()
+        public static ObservableCollection<Tours> GetTours()
         {
-            List<Tours> tours = new List<Tours>(DBconnection.connection.Tours);
-            List<Tours> tour = new List<Tours>();
+            ObservableCollection<Tours> tours = new ObservableCollection<Tours>(DBconnection.connection.Tours);
+            ObservableCollection<Tours> tour = new ObservableCollection<Tours>();
             foreach (var item in tours)
             {
                 tour.Add(
@@ -496,24 +436,31 @@ namespace Core
             int newId_DepartureCity, int newId_LandingCity, 
             int newId_Airline, int newCountDays)
         {
-            try
-            {
-                Tours tour = new Tours()
-                {
-                    Name = newName,
-                    Id_DepartureCity = newId_DepartureCity,
-                    Id_LandingCity = newId_LandingCity,
-                    Id_Airline = newId_Airline,
-                    CountDays = newCountDays,
-                };
-
-                DBconnection.connection.Tours.Add(tour);
-                DBconnection.connection.SaveChanges();
-                return true;
-            }
-            catch
+            if (newId_DepartureCity == newId_LandingCity)
             {
                 return false;
+            }
+            else
+            {
+                try
+                {
+                    Tours tour = new Tours()
+                    {
+                        Name = newName,
+                        Id_DepartureCity = newId_DepartureCity,
+                        Id_LandingCity = newId_LandingCity,
+                        Id_Airline = newId_Airline,
+                        CountDays = newCountDays,
+                    };
+
+                    DBconnection.connection.Tours.Add(tour);
+                    DBconnection.connection.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
 
@@ -533,20 +480,14 @@ namespace Core
 
         public static Tours GetTour(int id)
         {
-            List<Tours> tours = GetTours();
+            ObservableCollection<Tours> tours = GetTours();
             return tours.FirstOrDefault(t => t.Id_Tour == id);
         }
 
         public static Tours GetTour(string name)
         {
-            List<Tours> tours = GetTours();
+            ObservableCollection<Tours> tours = GetTours();
             return tours.FirstOrDefault(t => t.Name == name);
-        }
-
-        public static void UpdateTour(int id, Tours tour)
-        {
-            DBconnection.connection.Tours.SingleOrDefault(t => t.Id_Tour == id);
-            DBconnection.connection.SaveChanges();
         }
 
         public static void DeleteTour(Tours tour)
@@ -557,7 +498,7 @@ namespace Core
 
         public static void DeleteTour(int id)
         {
-            List<Tours> tours = GetTours();
+            ObservableCollection<Tours> tours = GetTours();
             var tour = tours.FirstOrDefault(t => t.Id_Tour == id);
 
             DBconnection.connection.Tours.Remove(tour);

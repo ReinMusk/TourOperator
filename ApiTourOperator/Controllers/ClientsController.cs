@@ -1,5 +1,6 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using static Core.DataAccess;
 
@@ -33,17 +34,6 @@ namespace ApiTourOperator.Controllers
                 return NotFound();
 
             UpdateClient(id, client);
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var result = GetClient(id);
-            if (result == null)
-                return NotFound();
-
-            DeleteClient(result);
             return NoContent();
         }
 

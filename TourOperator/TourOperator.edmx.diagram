@@ -5,20 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0c0dd9d38ea647f7969e42eca76c2a00" Name="Diagram1">
-        <EntityTypeShape EntityType="TourOperatorModel.Airline" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.Airplane" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.City" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.Clients" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.Flight" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.Ticket" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourOperatorModel.Tours" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="TourOperatorModel.FK_Tours_Airline" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Flight_Airplane" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Tours_City" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Tours_City1" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Ticket_Clients" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Flight_Tours" ManuallyRouted="false" />
-        <AssociationConnector Association="TourOperatorModel.FK_Ticket_Flight" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TourOperatorModel.Airline" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.Airplane" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.City" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.Clients" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.Flight" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.Ticket" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TourOperatorModel.Tours" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
