@@ -28,16 +28,29 @@ namespace Core
             return airplns;
         }
 
-        public static bool AddNewAirplane(int newId_Airplane, string newName)
+        public static bool AddNewAirplane(string newName)
         {
             try
             {
                 Airplane airplane = new Airplane()
                 {
-                    Id_Airplane = newId_Airplane,
                     Name = newName
                 };
 
+                DBconnection.connection.Airplane.Add(airplane);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewAirplane(Airplane airplane)
+        {
+            try
+            {
                 DBconnection.connection.Airplane.Add(airplane);
                 DBconnection.connection.SaveChanges();
                 return true;
@@ -99,13 +112,26 @@ namespace Core
             return city;
         }
 
-        public static bool AddNewCity(int newId_City, string newName)
+        public static bool AddNewCity(City city)
+        {
+            try
+            {
+                DBconnection.connection.City.Add(city);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewCity(string newName)
         {
             try
             {
                 City city = new City()
                 {
-                    Id_City = newId_City,
                     Name = newName
                 };
 
@@ -169,16 +195,30 @@ namespace Core
             return airlin;
         }
 
-        public static bool AddNewAirline(int newId_Airline, string newName)
+
+        public static bool AddNewAirline(string newName)
         {
             try
             {
                 Airline airline = new Airline()
                 {
-                    Id_Airline = newId_Airline,
                     Name = newName
                 };
 
+                DBconnection.connection.Airline.Add(airline);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewAirline(Airline airline)
+        {
+            try
+            {
                 DBconnection.connection.Airline.Add(airline);
                 DBconnection.connection.SaveChanges();
                 return true;
@@ -240,17 +280,30 @@ namespace Core
             return ticket;
         }
 
-        public static bool AddNewTicket(int newId_Ticket, int newId_Client, int newId_Flight)
+        public static bool AddNewTicket(int newId_Client, int newId_Flight)
         {
             try
             {
                 Ticket ticket = new Ticket()
                 {
-                    Id_Ticket = newId_Ticket,
                     Id_Client = newId_Client,
                     Id_Flight = newId_Flight
                 };
 
+                DBconnection.connection.Ticket.Add(ticket);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewTicket(Ticket ticket)
+        {
+            try
+            {
                 DBconnection.connection.Ticket.Add(ticket);
                 DBconnection.connection.SaveChanges();
                 return true;
@@ -307,20 +360,33 @@ namespace Core
             return client;
         }
 
-        public static bool AddNewClient(int newId_Client, string newName,
-            string newSurname, DateTime newDate_Birth)
+        public static bool AddNewClient(string newName, string newSurname,
+            DateTime newDate_Birth)
         {
             try
             {
                 Clients client = new Clients()
                 {
-                    Id_Client = newId_Client,
                     Name = newName,
                     Surname = newSurname,
                     Date_Birth = newDate_Birth
                 };
 
                 DBconnection.connection.Clients.Add(client);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewClients(Clients clients)
+        {
+            try
+            {
+                DBconnection.connection.Clients.Add(clients);
                 DBconnection.connection.SaveChanges();
                 return true;
             }
@@ -385,7 +451,7 @@ namespace Core
             return flight;
         }
 
-        public static bool AddNewFlight(int newId_Flight, int newId_Tour, 
+        public static bool AddNewFlight(int newId_Tour, 
             DateTime newDateFlight, TimeSpan newDepartureTime, 
             TimeSpan newFlightTime, int newId_Airplane, decimal newPrice_ticket)
         {
@@ -393,7 +459,6 @@ namespace Core
             {
                 Flight flight = new Flight()
                 {
-                    Id_Flight = newId_Flight,
                     Id_Tour = newId_Tour,
                     DateFlight = newDateFlight,
                     DepartureTime = newDepartureTime,
@@ -402,6 +467,20 @@ namespace Core
                     Price_ticket = newPrice_ticket
                 };
 
+                DBconnection.connection.Flight.Add(flight);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewFlight(Flight flight)
+        {
+            try
+            {
                 DBconnection.connection.Flight.Add(flight);
                 DBconnection.connection.SaveChanges();
                 return true;
@@ -460,7 +539,7 @@ namespace Core
             return tour;
         }
 
-        public static bool AddNewTour(int newId_Tour, string newName, 
+        public static bool AddNewTour(string newName, 
             int newId_DepartureCity, int newId_LandingCity, 
             int newId_Airline, int newCountDays)
         {
@@ -468,7 +547,6 @@ namespace Core
             {
                 Tours tour = new Tours()
                 {
-                    Id_Tour = newId_Tour,
                     Name = newName,
                     Id_DepartureCity = newId_DepartureCity,
                     Id_LandingCity = newId_LandingCity,
@@ -477,6 +555,20 @@ namespace Core
                 };
 
                 DBconnection.connection.Tours.Add(tour);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewTour(Tours tours)
+        {
+            try
+            {
+                DBconnection.connection.Tours.Add(tours);
                 DBconnection.connection.SaveChanges();
                 return true;
             }

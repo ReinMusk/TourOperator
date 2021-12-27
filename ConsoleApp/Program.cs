@@ -7,12 +7,9 @@ namespace ConsoleApp
     {
         static void Main()
         {
-            var temp = GetAirplanes();
+            GetAirplanes();
 
-            foreach (var item in temp)
-            {
-                Console.WriteLine(item.Name);
-            }
+            AddNewAirplane("Test");
         }
     }
 }
