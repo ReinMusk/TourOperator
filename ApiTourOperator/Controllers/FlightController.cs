@@ -15,7 +15,7 @@ namespace ApiTourOperator.Controllers
             return GetFlights();
         }
 
-        [HttpGet("{id_Flight}")]
+        [HttpGet("{id}")]
         public ActionResult<Flight> Get(int id)
         {
             var result = GetFlight(id);
@@ -25,7 +25,7 @@ namespace ApiTourOperator.Controllers
             return result;
         }
 
-        [HttpPut("{id_Flight}")]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, Flight flight)
         {
             var result = GetFlight(id);
@@ -36,7 +36,7 @@ namespace ApiTourOperator.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id_Flight}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var result = GetFlight(id);

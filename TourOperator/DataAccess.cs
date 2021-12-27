@@ -12,6 +12,8 @@ namespace Core
 {
     public static class DataAccess
     {
+        // Airplane
+        #region
         public static List<Airplane> GetAirplanes()
         {
             List<Airplane> airplaness = new List<Airplane>(DBconnection.connection.Airplane);
@@ -63,8 +65,8 @@ namespace Core
 
         public static Airplane GetAirplane(int id)
         {
-            List<Airplane> tattoos = GetAirplanes();
-            return tattoos.FirstOrDefault(t => t.Id_Airplane == id);
+            List<Airplane> airolanes = GetAirplanes();
+            return airolanes.FirstOrDefault(t => t.Id_Airplane == id);
         }
 
         public static Airplane GetAirplane(string name)
@@ -73,29 +75,15 @@ namespace Core
             return tattoos.FirstOrDefault(t => t.Name == name);
         }
 
-        public static void DeleteAirplane(Airplane airplane)
-        {
-            DBconnection.connection.Airplane.Remove(airplane);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteTattoo(int id)
-        {
-            List<Airplane> tattoos = GetAirplanes();
-            var tattoo = tattoos.FirstOrDefault(t => t.Id_Airplane == id);
-
-            DBconnection.connection.Airplane.Remove(tattoo);
-            DBconnection.connection.SaveChanges();
-        }
-
         public static void UpdateAirplane(int id, Airplane airplane)
         {
             DBconnection.connection.Airplane.SingleOrDefault(t => t.Id_Airplane == id);
             DBconnection.connection.SaveChanges();
         }
+        #endregion // Airplane
 
-
-        //////////////////////////////////////////////////////////
+        // City
+        #region
         public static List<City> GetCities()
         {
             List<City> cities = new List<City>(DBconnection.connection.City);
@@ -157,28 +145,15 @@ namespace Core
             return cities.FirstOrDefault(t => t.Name == name);
         }
 
-        public static void DeleteCity(City city)
-        {
-            DBconnection.connection.City.Remove(city);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteCity(int id)
-        {
-            List<City> cities = GetCities();
-            var city = cities.FirstOrDefault(t => t.Id_City == id);
-
-            DBconnection.connection.City.Remove(city);
-            DBconnection.connection.SaveChanges();
-        }
-
         public static void UpdateCity(int id, City city)
         {
             DBconnection.connection.City.SingleOrDefault(t => t.Id_City == id);
             DBconnection.connection.SaveChanges();
         }
+        #endregion
 
-        //////////////////////////////////////////////////////////
+        // Airlines
+        #region
         public static List<Airline> GetAirlines()
         {
             List<Airline> airlines = new List<Airline>(DBconnection.connection.Airline);
@@ -246,102 +221,10 @@ namespace Core
             DBconnection.connection.Airline.SingleOrDefault(t => t.Id_Airline == id);
             DBconnection.connection.SaveChanges();
         }
+        #endregion
 
-        public static void DeleteAirline(Airline airline)
-        {
-            DBconnection.connection.Airline.Remove(airline);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteAirline(int id)
-        {
-            List<Airline> airlines = GetAirlines();
-            var airline = airlines.FirstOrDefault(t => t.Id_Airline == id);
-
-            DBconnection.connection.Airline.Remove(airline);
-            DBconnection.connection.SaveChanges();
-        }
-
-        //////////////////////////////////////////////////////////
-        public static List<Ticket> GetTickets()
-        {
-            List<Ticket> tickets = new List<Ticket>(DBconnection.connection.Ticket);
-            List<Ticket> ticket = new List<Ticket>();
-            foreach (var item in tickets)
-            {
-                ticket.Add(
-                    new Ticket
-                    {
-                        Id_Ticket = item.Id_Ticket,
-                        Id_Client = item.Id_Client,
-                        Id_Flight = item.Id_Flight
-                    });
-            }
-            return ticket;
-        }
-
-        public static bool AddNewTicket(int newId_Client, int newId_Flight)
-        {
-            try
-            {
-                Ticket ticket = new Ticket()
-                {
-                    Id_Client = newId_Client,
-                    Id_Flight = newId_Flight
-                };
-
-                DBconnection.connection.Ticket.Add(ticket);
-                DBconnection.connection.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static bool AddNewTicket(Ticket ticket)
-        {
-            try
-            {
-                DBconnection.connection.Ticket.Add(ticket);
-                DBconnection.connection.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static Ticket GetTicket(int id)
-        {
-            List<Ticket> tickets = GetTickets();
-            return tickets.FirstOrDefault(t => t.Id_Ticket == id);
-        }
-
-        public static void UpdateTicket(int id, Ticket ticket)
-        {
-            DBconnection.connection.Ticket.SingleOrDefault(t => t.Id_Ticket == id);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteTicket(Ticket ticket)
-        {
-            DBconnection.connection.Ticket.Remove(ticket);
-            DBconnection.connection.SaveChanges();
-        }
-
-        public static void DeleteTicket(int id)
-        {
-            List<Ticket> tickets = GetTickets();
-            var ticket = tickets.FirstOrDefault(t => t.Id_Ticket == id);
-
-            DBconnection.connection.Ticket.Remove(ticket);
-            DBconnection.connection.SaveChanges();
-        }
-
-        //////////////////////////////////////////////////////////
+        //Clients
+        #region
         public static List<Clients> GetClients()
         {
             List<Clients> clients = new List<Clients>(DBconnection.connection.Clients);
@@ -413,23 +296,91 @@ namespace Core
             DBconnection.connection.Clients.SingleOrDefault(t => t.Id_Client == id);
             DBconnection.connection.SaveChanges();
         }
+        #endregion
 
-        public static void DeleteClient(Clients client)
+        // Tickets
+        #region
+        public static List<Ticket> GetTickets()
         {
-            DBconnection.connection.Clients.Remove(client);
+            List<Ticket> tickets = new List<Ticket>(DBconnection.connection.Ticket);
+            List<Ticket> ticket = new List<Ticket>();
+            foreach (var item in tickets)
+            {
+                ticket.Add(
+                    new Ticket
+                    {
+                        Id_Ticket = item.Id_Ticket,
+                        Id_Client = item.Id_Client,
+                        Id_Flight = item.Id_Flight
+                    });
+            }
+            return ticket;
+        }
+
+        public static bool AddNewTicket(int newId_Client, int newId_Flight)
+        {
+            try
+            {
+                Ticket ticket = new Ticket()
+                {
+                    Id_Client = newId_Client,
+                    Id_Flight = newId_Flight
+                };
+
+                DBconnection.connection.Ticket.Add(ticket);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNewTicket(Ticket ticket)
+        {
+            try
+            {
+                DBconnection.connection.Ticket.Add(ticket);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static Ticket GetTicket(int id)
+        {
+            List<Ticket> tickets = GetTickets();
+            return tickets.FirstOrDefault(t => t.Id_Ticket == id);
+        }
+
+        public static void UpdateTicket(int id, Ticket ticket)
+        {
+            DBconnection.connection.Ticket.SingleOrDefault(t => t.Id_Ticket == id);
             DBconnection.connection.SaveChanges();
         }
 
-        public static void DeleteClient(int id)
+        public static void DeleteTicket(Ticket ticket)
         {
-            List<Clients> clients = GetClients();
-            var client = clients.FirstOrDefault(t => t.Id_Client == id);
-
-            DBconnection.connection.Clients.Remove(client);
+            DBconnection.connection.Entry(ticket).State = System.Data.Entity.EntityState.Deleted;
             DBconnection.connection.SaveChanges();
         }
 
-        //////////////////////////////////////////////////////////
+        public static void DeleteTicket(int id)
+        {
+            List<Ticket> tickets = GetTickets();
+            var ticket = tickets.FirstOrDefault(t => t.Id_Ticket == id);
+
+            DBconnection.connection.Entry(ticket).State = System.Data.Entity.EntityState.Deleted; ;
+            DBconnection.connection.SaveChanges();
+        }
+        #endregion
+
+        //Flights
+        #region
         public static List<Flight> GetFlights()
         {
             List<Flight> flights = new List<Flight>(DBconnection.connection.Flight);
@@ -517,8 +468,10 @@ namespace Core
             DBconnection.connection.Flight.Remove(flight);
             DBconnection.connection.SaveChanges();
         }
+        #endregion
 
-        //////////////////////////////////////////////////////////
+        //Tours
+        #region
         public static List<Tours> GetTours()
         {
             List<Tours> tours = new List<Tours>(DBconnection.connection.Tours);
@@ -610,5 +563,6 @@ namespace Core
             DBconnection.connection.Tours.Remove(tour);
             DBconnection.connection.SaveChanges();
         }
+        #endregion
     }
 }

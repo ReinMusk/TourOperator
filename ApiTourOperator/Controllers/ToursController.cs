@@ -15,7 +15,7 @@ namespace ApiTourOperator.Controllers
             return GetTours();
         }
 
-        [HttpGet("{id_Tours}")]
+        [HttpGet("{id}")]
         public ActionResult<Tours> Get(int id)
         {
             var result = GetTour(id);
@@ -25,7 +25,7 @@ namespace ApiTourOperator.Controllers
             return result;
         }
 
-        [HttpPut("{id_Tours}")]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, Tours tour)
         {
             var result = GetTour(id);
@@ -36,7 +36,7 @@ namespace ApiTourOperator.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id_Tours}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var result = GetTour(id);

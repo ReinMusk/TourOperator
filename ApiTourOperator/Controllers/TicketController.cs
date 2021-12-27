@@ -15,7 +15,7 @@ namespace ApiTourOperator.Controllers
             return GetTickets();
         }
 
-        [HttpGet("{id_Ticket}")]
+        [HttpGet("{id}")]
         public ActionResult<Ticket> Get(int id)
         {
             var result = GetTicket(id);
@@ -25,7 +25,7 @@ namespace ApiTourOperator.Controllers
             return result;
         }
 
-        [HttpPut("{id_Ticket}")]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, Ticket ticket)
         {
             var result = GetTicket(id);
@@ -36,7 +36,7 @@ namespace ApiTourOperator.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id_Ticket}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var result = GetTicket(id);
