@@ -16,7 +16,7 @@ namespace Core
         {
             List<Airplane> airplaness = new List<Airplane>(DBconnection.connection.Airplane);
             List<Airplane> airplns = new List<Airplane>();
-            foreach (var item in airplns)
+            foreach (var item in airplaness)
             {
                 airplns.Add(
                     new Airplane
@@ -87,7 +87,7 @@ namespace Core
         {
             List<City> cities = new List<City>(DBconnection.connection.City);
             List<City> city = new List<City>();
-            foreach (var item in city)
+            foreach (var item in cities)
             {
                 city.Add(
                     new City
@@ -157,7 +157,7 @@ namespace Core
         {
             List<Airline> airlines = new List<Airline>(DBconnection.connection.Airline);
             List<Airline> airlin = new List<Airline>();
-            foreach (var item in airlin)
+            foreach (var item in airlines)
             {
                 airlin.Add(
                     new Airline
@@ -227,7 +227,7 @@ namespace Core
         {
             List<Ticket> tickets = new List<Ticket>(DBconnection.connection.Ticket);
             List<Ticket> ticket = new List<Ticket>();
-            foreach (var item in ticket)
+            foreach (var item in tickets)
             {
                 ticket.Add(
                     new Ticket
@@ -293,7 +293,7 @@ namespace Core
         {
             List<Clients> clients = new List<Clients>(DBconnection.connection.Clients);
             List<Clients> client = new List<Clients>();
-            foreach (var item in client)
+            foreach (var item in clients)
             {
                 client.Add(
                     new Clients
@@ -304,7 +304,7 @@ namespace Core
                         Date_Birth = item.Date_Birth
                     });
             }
-            return clients;
+            return client;
         }
 
         public static bool AddNewClient(int newId_Client, string newName,
@@ -368,7 +368,7 @@ namespace Core
         {
             List<Flight> flights = new List<Flight>(DBconnection.connection.Flight);
             List<Flight> flight = new List<Flight>();
-            foreach (var item in flight)
+            foreach (var item in flights)
             {
                 flight.Add(
                     new Flight
@@ -444,7 +444,7 @@ namespace Core
         {
             List<Tours> tours = new List<Tours>(DBconnection.connection.Tours);
             List<Tours> tour = new List<Tours>();
-            foreach (var item in tour)
+            foreach (var item in tours)
             {
                 tour.Add(
                     new Tours
