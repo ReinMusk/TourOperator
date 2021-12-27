@@ -28,6 +28,26 @@ namespace Core
             return airplns;
         }
 
+        public static bool AddNewAirplane(int newId_Airplane, string newName)
+        {
+            try
+            {
+                Airplane airplane = new Airplane()
+                {
+                    Id_Airplane = newId_Airplane,
+                    Name = newName
+                };
+
+                DBconnection.connection.Airplane.Add(airplane);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static Airplane GetAirplane(int id)
         {
             List<Airplane> tattoos = GetAirplanes();
@@ -79,6 +99,26 @@ namespace Core
             return city;
         }
 
+        public static bool AddNewCity(int newId_City, string newName)
+        {
+            try
+            {
+                City city = new City()
+                {
+                    Id_City = newId_City,
+                    Name = newName
+                };
+
+                DBconnection.connection.City.Add(city);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static City GetCity(int id)
         {
             List<City> cities = GetCities();
@@ -127,6 +167,26 @@ namespace Core
                     });
             }
             return airlin;
+        }
+
+        public static bool AddNewAirline(int newId_Airline, string newName)
+        {
+            try
+            {
+                Airline airline = new Airline()
+                {
+                    Id_Airline = newId_Airline,
+                    Name = newName
+                };
+
+                DBconnection.connection.Airline.Add(airline);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static Airline GetAirline(int id)
@@ -180,6 +240,27 @@ namespace Core
             return ticket;
         }
 
+        public static bool AddNewTicket(int newId_Ticket, int newId_Client, int newId_Flight)
+        {
+            try
+            {
+                Ticket ticket = new Ticket()
+                {
+                    Id_Ticket = newId_Ticket,
+                    Id_Client = newId_Client,
+                    Id_Flight = newId_Flight
+                };
+
+                DBconnection.connection.Ticket.Add(ticket);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static Ticket GetTicket(int id)
         {
             List<Ticket> tickets = GetTickets();
@@ -220,10 +301,33 @@ namespace Core
                         Id_Client = item.Id_Client,
                         Name = item.Name,
                         Surname = item.Surname,
-                        Date_Birth = item.Date_Birth,
+                        Date_Birth = item.Date_Birth
                     });
             }
             return clients;
+        }
+
+        public static bool AddNewClient(int newId_Client, string newName,
+            string newSurname, DateTime newDate_Birth)
+        {
+            try
+            {
+                Clients client = new Clients()
+                {
+                    Id_Client = newId_Client,
+                    Name = newName,
+                    Surname = newSurname,
+                    Date_Birth = newDate_Birth
+                };
+
+                DBconnection.connection.Clients.Add(client);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static Clients GetClient(int id)
@@ -281,6 +385,33 @@ namespace Core
             return flight;
         }
 
+        public static bool AddNewFlight(int newId_Flight, int newId_Tour, 
+            DateTime newDateFlight, TimeSpan newDepartureTime, 
+            TimeSpan newFlightTime, int newId_Airplane, decimal newPrice_ticket)
+        {
+            try
+            {
+                Flight flight = new Flight()
+                {
+                    Id_Flight = newId_Flight,
+                    Id_Tour = newId_Tour,
+                    DateFlight = newDateFlight,
+                    DepartureTime = newDepartureTime,
+                    FlightTime = newFlightTime,
+                    Id_Airplane = newId_Airplane,
+                    Price_ticket = newPrice_ticket
+                };
+
+                DBconnection.connection.Flight.Add(flight);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static Flight GetFlight(int id)
         {
             List<Flight> clients = GetFlights();
@@ -327,6 +458,32 @@ namespace Core
                     });
             }
             return tour;
+        }
+
+        public static bool AddNewTour(int newId_Tour, string newName, 
+            int newId_DepartureCity, int newId_LandingCity, 
+            int newId_Airline, int newCountDays)
+        {
+            try
+            {
+                Tours tour = new Tours()
+                {
+                    Id_Tour = newId_Tour,
+                    Name = newName,
+                    Id_DepartureCity = newId_DepartureCity,
+                    Id_LandingCity = newId_LandingCity,
+                    Id_Airline = newId_Airline,
+                    CountDays = newCountDays,
+                };
+
+                DBconnection.connection.Tours.Add(tour);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static Tours GetTour(int id)
