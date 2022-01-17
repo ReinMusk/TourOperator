@@ -1,6 +1,7 @@
 ﻿using System;
 using static Core.DataAccess;
-
+using Core;
+// убрать using Core, который не используется
 namespace ConsoleApp
 {
     class Program
@@ -8,12 +9,11 @@ namespace ConsoleApp
         static void Main()
         {
 
-            DeleteFlight(1);
-            //while (true)
-            //{
-            //    var command = Console.ReadLine();
-            //    Execute(command);
-            //}
+            while (true)
+            {
+                var command = Console.ReadLine();
+                Execute(command);
+            }
         }
 
         private static void Execute(string command)
@@ -41,7 +41,7 @@ namespace ConsoleApp
         private static void Add(string com)
         {
             string[] temp = Console.ReadLine().Trim().Split(' ');
-            bool t = false;
+            bool t = false; // некорректное переменная t и temp
             switch (com)
             {
                 case "Airlines":
@@ -75,7 +75,7 @@ namespace ConsoleApp
 
             Output(t);
         }
-        private static void Get(string com)
+        private static void Get(string com)// некорректное имя переменной com
         {
             switch (com)
             {
@@ -141,7 +141,7 @@ namespace ConsoleApp
                     break;
             }
         }
-
+        // плохие названия переменных
         public static void Output(bool t)
         {
             Console.WriteLine(t ? "OK" : "NOT OK");

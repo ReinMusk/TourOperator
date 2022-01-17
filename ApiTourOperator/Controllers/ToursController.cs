@@ -23,18 +23,18 @@ namespace ApiTourOperator.Controllers
                 return NotFound();
 
             return result;
-        }
+        } // убрать закомментированную часть кода
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var result = GetTour(id);
-            if (result == null)
-                return NotFound();
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var result = GetTour(id);
+        //    if (result == null)
+        //        return NotFound();
 
-            DeleteTour(result);
-            return NoContent();
-        }
+        //    DeleteTour(result);
+        //    return NoContent();
+        //}
 
         [HttpPost]
         public IActionResult Create(Tours tour)

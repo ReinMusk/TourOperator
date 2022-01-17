@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebTourOperator
+namespace WebTourOperator // не сделан ASP.NET
 {
     public class Program
     {

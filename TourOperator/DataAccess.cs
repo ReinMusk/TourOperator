@@ -12,7 +12,7 @@ using System.Data.Entity;
 namespace Core
 {
     public static class DataAccess
-    {
+    {// хорошее использование регионов
         // Airplane
         #region
         public static ObservableCollection<Airplane> GetAirplanes()
@@ -66,7 +66,7 @@ namespace Core
             return airolanes.FirstOrDefault(t => t.Name == name);
         }
         #endregion // Airplane
-
+ 
         // City
         #region
         public static ObservableCollection<City> GetCities()
@@ -255,7 +255,9 @@ namespace Core
 
         public static void UpdateClient(int id, Clients client)
         {
-            DBconnection.connection.Clients.SingleOrDefault(t => t.Id_Client == id);
+            var c = DBconnection.connection.Clients.SingleOrDefault(t => t.Id_Client == id);
+            c.Name = client.Name;
+            c.Surname = client.Surname;
             DBconnection.connection.SaveChanges();
         }
         #endregion

@@ -8,7 +8,7 @@ namespace ApiTourOperator.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase
-    {
+    { // хорошо, простые контроллеры
         [HttpGet]
         public IEnumerable<Ticket> Get()
         {
